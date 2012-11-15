@@ -5,6 +5,7 @@
 
 //var fqdn = 'https://api-uat.bf.pacer.sl.attcompute.com';
 var fqdn = 'http://api.kristsauders.com';
+//var fqdn = 'https://api.att.com';
 function syntaxHighlight(json) {
     json = json.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
     return json.replace(/("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?)/g, function (match) {
@@ -106,11 +107,11 @@ var api = {
     appSecret: null,
     init: function(appKey, appSecret, scope, callback, errorCallback) {
         api.manuallyInitialized = true;
-        appKey = appKey || "65b7c04c33746f070b2494eae5c09e71";
+        appKey = appKey || "b7f7705b7c9d522b40663e7957bc2b78";
         api.appKey = appKey;
-        appSecret = appSecret || "8cb2c2f5111efb57";
+        appSecret = appSecret || "0987e24a33770adc";
         api.appSecret = appSecret;
-        scope = scope || "SMS,MMS,WAP,SPEECH,ADS,CCS";
+        scope = scope || "SMS,MMS,WAP,SPEECH,CCS";
         callback = callback || function(data) { };
         errorCallback = errorCallback || function(error) { alert(error); };
         // Check for presence of 'code' query parameter, which means the user has returned from consent.
@@ -120,19 +121,19 @@ var api = {
         for(var i=0;i<params.length;i++) {
             queryStringList[params[i].split("=")[0]] = unescape(params[i].split("=")[1]);
         }
-        if($.cookie('access_token')) {
-            api.token = $.cookie('access_token');
+        if($.cookie('prod_access_token')) {
+            api.token = $.cookie('prod_access_token');
             if(queryStringList.code!=null) {
                 api.oauth.getToken('authorization_code', null, queryStringList.code, function(data) {
                     api.oauth.token = data.access_token;
-                    $.cookie('auth_access_token', data.access_token, { path: '/', expires: 365 });
+                    $.cookie('prod_auth_access_token', data.access_token, { path: '/', expires: 365 });
                     $('button').removeClass('disabled');
                     $('.authorize').addClass('btn-success').text("Authorized");
                 });
             } else {
-                if($.cookie('auth_access_token')) {
+                if($.cookie('prod_auth_access_token')) {
                     $(document).ready(function(){
-                        api.oauth.token = $.cookie('auth_access_token');
+                        api.oauth.token = $.cookie('prod_auth_access_token');
                         $('button').removeClass('disabled');
                         $('.authorize').addClass('btn-success').text("Authorized");
                     });
@@ -142,11 +143,11 @@ var api = {
         } else {
             api.oauth.getToken('client_credentials', scope, null, function(data) {
                 api.token = data.access_token;
-                $.cookie('access_token', data.access_token, { path: '/', expires: 365 });
+                $.cookie('prod_access_token', data.access_token, { path: '/', expires: 365 });
                 if(queryStringList.code!=null) {
                     api.oauth.getToken('authorization_code', null, queryStringList.code, function(data) {
                             api.oauth.token = data.access_token;
-                            $.cookie('auth_access_token', data.access_token, { path: '/', expires: 365 });
+                            $.cookie('prod_auth_access_token', data.access_token, { path: '/', expires: 365 });
                             $('button').removeClass('disabled');
                             $('.authorize').addClass('btn-success').text("Authorized");
                         }, function(error) {
@@ -599,7 +600,7 @@ Content-Disposition: attachment; name=""\n\
         token: null,
         authorize: function(scope, redirectUri) {
             redirectUri = redirectUri || window.location;
-            window.location = "https://api-uat.bf.pacer.sl.attcompute.com/oauth/authorize?client_id=" + api.appKey + "&scope=" + scope + "&redirect_uri=" + redirectUri;
+            window.location = "https://api.att.com/oauth/authorize?client_id=" + api.appKey + "&scope=" + scope + "&redirect_uri=" + redirectUri;
         },
         getToken: function(grant_type, scope, code, callback, errorCallback) {
             code = code || null;

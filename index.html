@@ -95,7 +95,7 @@
 
             <div class="hero-unit">
                 <h1>AT&T API Platform <a id="init" class="btn btn-primary disabled loading" >Initializing...</a></h1>
-                <p>This is a pure Javascript app, using the prototype ATT-JS Javascript plugin. It uses the E3 (UAT) environment, 
+                <p>This is a pure Javascript app, using the prototype ATT-JS Javascript plugin. It now uses the Production environment, 
                     and routes requests through a CORS enabled proxy. See the Docs tab for more information.</p>
                 <pre>
                             --->        &lt;head>    
@@ -114,7 +114,7 @@ Import ATT-JS plug-in       --->            &lt;script src="http://attjs.kristsa
                         <button id="sendSms" class="btn btn-primary btn-large disabled needs-oauth" >Send SMS »</button> <br/>
                         <input class="span3" id="smsId" type="text" title="Message ID" value="Message ID">  
                         <button id="getSmsStatus" class="btn btn-primary btn-large disabled needs-oauth" >Check Message Status »</button> <br/>
-                        <input class="span2" id="smsInboxNumber" type="text" title="52862224" value="52862224">  
+                        <input class="span2" id="smsInboxNumber" type="text" title="49501024" value="49501024">  
                         <button id="getSmsInbox" class="btn btn-primary btn-large disabled needs-oauth" >Get Inbox »</button>
                     </p>
                 </div>
@@ -224,7 +224,7 @@ Import ATT-JS plug-in       --->            &lt;script src="http://attjs.kristsa
             <hr style="background-color:#BDBDBD; height:1px;" />
             <div class="row">
                 <div class="span7">
-                    <h2>Advertising</h2>
+                    <h2>Advertising (Disabled at Release 2.2)</h2>
                     <p>
                         <button id="getAd" class="btn btn-primary btn-large disabled needs-oauth" >Get Advertisement »</button>
                     </p>
@@ -242,9 +242,10 @@ Import ATT-JS plug-in       --->            &lt;script src="http://attjs.kristsa
             <hr style="background-color:#BDBDBD; height:1px;" />
             <div class="row">
                 <div class="span7">
-                    <h2>Call Management</h2>
+                    <h2>Call Management (Beta)</h2>
                     <p>This example uses the script located at <a target="__blank" href="http://attjs.kristsauders.com/tropo.js">tropo.js</a><br/><br/>
                         <input class="span2" id="tropoNumber" type="text" title="4258028620" value="4258028620"> 
+                        <input class="span2" id="tropoMessage" type="text" title="Hello, World!" value="Hello, World!"> 
                         <button id="startSession" class="btn btn-primary btn-large disabled needs-oauth" >Start Session »</button><br/>
                         <input class="span2" id="tropoId" type="text" title="Session ID" value="Session ID"> 
                         <input class="span2" id="tropoSignal" type="text" title="exit" value="exit"> 
@@ -266,7 +267,7 @@ Import ATT-JS plug-in       --->            &lt;script src="http://attjs.kristsa
             <hr style="background-color:#BDBDBD; height:1px;" />
             <div class="row">
                 <div class="span7">
-                    <h2>In App Messaging from Mobile Number</h2> 
+                    <h2>Messaging On Behalf Of (Beta)</h2> 
                     <p>
                         <button class="btn btn-primary btn-large authorize" >Authorize »</button> <br/><br/>
                         <input class="span2" id="sendMoboNumber" type="text" title="4258028620" value="4258028620"> 
@@ -360,7 +361,7 @@ Import ATT-JS plug-in       --->            &lt;script src="http://attjs.kristsa
 
             <div class="hero-unit">
                 <h1>AT&T API Platform</h1>
-                <p>This Javascript plugin uses the E3 (UAT) environment, until Release 2.2 is launched. It also routes all requests through a very simple
+                <p>This Javascript plugin now uses the Production environment. It also routes all requests through a very simple
                     CORS enabled proxy, which will be removed once the API Gateway fully supports CORS.</p>
                 <p>The main app uses only the minimum arguments you must pass, whereas the sample code below uses every optional parameter, such as
                     success and failure callback functions.</p>
@@ -404,7 +405,7 @@ Import ATT-JS plug-in       --->            &lt;script src="http://attjs.kristsa
     });
 
     // Check for SMS messages sent to your application
-    api.sms.att.inbox(number,
+    api.sms.att.inbox('49501024',
         function(data){
             alert(JSON.stringify(data));
         }, function(error){
@@ -519,7 +520,7 @@ Import ATT-JS plug-in       --->            &lt;script src="http://attjs.kristsa
             <hr style="background-color:#BDBDBD; height:1px;" />
             <div class="row">
                 <div class="span12">
-                    <h2>Advertising</h2>
+                    <h2>Advertising (Disabled at Release 2.2)</h2>
                     <p>
                         <pre>
 &lt;script>
@@ -544,7 +545,7 @@ Import ATT-JS plug-in       --->            &lt;script src="http://attjs.kristsa
                         <pre>
 &lt;script>
     // Start a call control session by calling the passed phone number, or pass other parameters defined in your script
-    api.tropo.att.session({'number': '4258028620'},
+    api.tropo.att.session({'number': '4258028620', message: 'Hello, World!'},
         function(data){
             alert('The Session ID was saved to api.tropo.att.Id: ' + api.tropo.att.Id);
         }, function(error){

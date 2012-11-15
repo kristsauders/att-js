@@ -222,7 +222,7 @@
                 });
                 $("#startSession").click(function() {
                     $('#startSession').addClass("disabled loading");
-                    api.tropo.att.session({'number':$('#tropoNumber').val()}, function(data) {
+                    api.tropo.att.session({'number':$('#tropoNumber').val(), 'messageToSay':$('#tropoMessage').val()}, function(data) {
                         $('#startSession').removeClass("disabled loading");
                         $('#tropoId').val(api.tropo.att.Id);
                         $('<pre>' + syntaxHighlight(JSON.stringify(data, null, '\t')) + '</pre>').dialog({
