@@ -162,7 +162,7 @@
                     });
                 });
                 $(".authorize").click(function() {
-                    api.oauth.authorize("TL,DC,MOBO,MIM");
+                    api.oauth.authorize("TL,DC,IMMN,MIM");
                 });
                 $("#getLocation").click(function() {
                     $('#getLocation').addClass("disabled loading");
