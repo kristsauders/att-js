@@ -111,7 +111,7 @@ var api = {
         api.appKey = appKey;
         appSecret = appSecret || "0987e24a33770adc";
         api.appSecret = appSecret;
-        scope = scope || "SMS,MMS,WAP,SPEECH,CCS";
+        scope = scope || "SMS,MMS,WAP,SPEECH,CMS";
         callback = callback || function(data) { };
         errorCallback = errorCallback || function(error) { alert(error); };
         // Check for presence of 'code' query parameter, which means the user has returned from consent.
