@@ -162,7 +162,7 @@
                     });
                 });
                 $(".authorize").click(function() {
-                    api.oauth.authorize("TL,DC,MOBO,MIM");
+                    api.oauth.authorize("TL,DC,IMMN,MIM");
                 });
                 $("#getLocation").click(function() {
                     $('#getLocation').addClass("disabled loading");
@@ -173,7 +173,7 @@
                             width: $(window).width() - 100,
                             height: $(window).height() - 100
                         });
-                        if (data.RequestError.ServiceException.MessageId == 'SVC0002') api.oauth.authorize("TL,DC,MOBO,MIM");
+                        if (data.RequestError.ServiceException.MessageId == 'SVC0002') api.oauth.authorize("TL,DC,IMMN,MIM");
                     }, function(error) {
                         $('#getLocation').removeClass("disabled loading");
                         $('<pre>' + syntaxHighlight(JSON.stringify(JSON.parse(error), null, '\t')) + '</pre>').dialog({
@@ -192,7 +192,7 @@
                             width: $(window).width() - 100,
                             height: $(window).height() - 100
                         });
-                        if (data.RequestError.ServiceException.MessageId == 'SVC0002') api.oauth.authorize("TL,DC,MOBO,MIM");
+                        if (data.RequestError.ServiceException.MessageId == 'SVC0002') api.oauth.authorize("TL,DC,IMMN,MIM");
                     }, function(error) {
                         $('#getCapabilities').removeClass("disabled loading");
                         $('<pre>' + syntaxHighlight(JSON.stringify(JSON.parse(error), null, '\t')) + '</pre>').dialog({
@@ -267,7 +267,7 @@
                             width: $(window).width() - 100,
                             height: $(window).height() - 100
                         });
-                        if (data.RequestError.ServiceException.MessageId == 'SVC0002') api.oauth.authorize("TL,DC,MOBO,MIM");
+                        if (data.RequestError.ServiceException.MessageId == 'SVC0002') api.oauth.authorize("TL,DC,IMMN,MIM");
                     }, function(error) {
                         $('#sendMoboMessage').removeClass("disabled loading");
                         $('<pre>' + syntaxHighlight(JSON.stringify(JSON.parse(error), null, '\t')) + '</pre>').dialog({
@@ -286,7 +286,7 @@
                             width: $(window).width() - 100,
                             height: $(window).height() - 100
                         });
-                        if (data.RequestError.ServiceException.MessageId == 'SVC0002') api.oauth.authorize("TL,DC,MOBO,MIM");
+                        if (data.RequestError.ServiceException.MessageId == 'SVC0002') api.oauth.authorize("TL,DC,IMMN,MIM");
                     }, function(error) {
                         $('#getMoboHeaders').removeClass("disabled loading");
                         $('<pre>' + syntaxHighlight(JSON.stringify(JSON.parse(error), null, '\t')) + '</pre>').dialog({
@@ -305,7 +305,7 @@
                             width: $(window).width() - 100,
                             height: $(window).height() - 100
                         });
-                        if (data.RequestError.ServiceException.MessageId == 'SVC0002') api.oauth.authorize("TL,DC,MOBO,MIM");
+                        if (data.RequestError.ServiceException.MessageId == 'SVC0002') api.oauth.authorize("TL,DC,IMMN,MIM");
                     }, function(error) {
                         $('#getMoboMessage').removeClass("disabled loading");
                         $('<pre>' + syntaxHighlight(JSON.stringify(JSON.parse(error), null, '\t')) + '</pre>').dialog({
