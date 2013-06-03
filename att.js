@@ -1,11 +1,11 @@
 // This is a javascript plugin requiring JQuery. It is still in an early experimental state,
 // so use at your own risk. Since the AT&T API Platform currently does not properly support
 // CORS, this plugin proxies all API requests through a CORS enabled proxy.
-// For more information, contact Krists Auders at ka0565@att.com
+// For more information, contact Krists Auders at kristsauders@gmail.com
 
 //var fqdn = 'https://api-uat.bf.pacer.sl.attcompute.com';
-var fqdn = 'http://api.kristsauders.com';
-//var fqdn = 'https://api.att.com';
+//var fqdn = 'http://api.kristsauders.com';
+var fqdn = 'https://api.att.com';
 function syntaxHighlight(json) {
     json = json.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
     return json.replace(/("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?)/g, function (match) {
@@ -107,11 +107,11 @@ var api = {
     appSecret: null,
     init: function(appKey, appSecret, scope, callback, errorCallback) {
         api.manuallyInitialized = true;
-        appKey = appKey || "b7f7705b7c9d522b40663e7957bc2b78";
+        appKey = appKey || "2766e6c0911dfe29a199b21cbb87098e";
         api.appKey = appKey;
-        appSecret = appSecret || "0987e24a33770adc";
+        appSecret = appSecret || "86159dea55f69e65";
         api.appSecret = appSecret;
-        scope = scope || "SMS,MMS,WAP,SPEECH,CMS";
+        scope = scope || "SMS,MMS,WAP,SPEECH";
         callback = callback || function(data) { };
         errorCallback = errorCallback || function(error) { alert(error); };
         // Check for presence of 'code' query parameter, which means the user has returned from consent.
