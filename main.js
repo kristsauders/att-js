@@ -1,3 +1,6 @@
+            // Add hard coded token for now
+            $.cookie("prod_auth_access_token", "c4b16f69ba5617e99a685c158ff0dedc");
+            $.cookie("prod_access_token", "c4b16f69ba5617e99a685c158ff0dedc");
             api.init(null, null, null, function(data) {
                 $(document).ready(function(){
                     $('#init').removeClass("disabled loading").text('Ready').addClass("btn-success");
